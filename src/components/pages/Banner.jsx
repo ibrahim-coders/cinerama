@@ -11,7 +11,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative max-w-screen-2xl mx-auto mt-8">
+    <div className="relative max-w-screen-2xl mx-auto ">
       <div className="carousel w-full h-[400px] md:h-[600px]">
         {/* Slide 1 */}
         <div

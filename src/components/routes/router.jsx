@@ -4,6 +4,7 @@ import HomeLayout from '../layout/HomeLayout';
 import SignUp from '../Authentication/SignUp';
 import Home from '../pages/Home';
 import Login from '../Authentication/Login';
+import MovieForm from '../pages/AddMovie/MovieForm';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/addmovie',
+        element: <MovieForm />,
       },
       {
         path: '/login',

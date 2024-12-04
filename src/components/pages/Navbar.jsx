@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { RiMovie2Fill } from 'react-icons/ri';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -6,7 +7,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="relative  lg:backdrop-blur-sm">
+      <header className="relative  lg:backdrop-blur-sm bg-blue-900">
         <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
           <nav
             aria-label="main navigation"
@@ -14,9 +15,15 @@ const Navbar = () => {
             role="navigation"
           >
             {/* Brand logo */}
-            <div className="w-full">
-              <h2 className="text-3xl font-bold text-white mt-4">CINERAMA</h2>
+            <div className="w-full  gap-2 my-2">
+              {/* Logo */}
+              <div className="flex items-center ">
+                <RiMovie2Fill className="text-yellow-500 text-4xl ml-14" />
+              </div>
+              {/* Title */}
+              <h2 className="text-3xl font-bold text-white">CINERAMA</h2>
             </div>
+
             {/* Mobile trigger */}
             <button
               className={`relative text-white  order-10 block h-10 w-10 self-center lg:hidden
@@ -32,15 +39,15 @@ const Navbar = () => {
               <div className="absolute w-6 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
                 <span
                   aria-hidden="true"
-                  className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+                  className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-white transition-all duration-300"
                 ></span>
                 <span
                   aria-hidden="true"
-                  className="absolute block h-0.5 w-6 transform rounded-full bg-slate-900 transition duration-300"
+                  className="absolute block h-0.5 w-6 transform rounded-full bg-white transition duration-300"
                 ></span>
                 <span
                   aria-hidden="true"
-                  className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-slate-900 transition-all duration-300"
+                  className="absolute block h-0.5 w-1/2 origin-top-left translate-y-2 transform rounded-full bg-white transition-all duration-300"
                 ></span>
               </div>
             </button>
@@ -77,7 +84,7 @@ const Navbar = () => {
               </li>
               <li role="none" className="flex items-stretch">
                 <NavLink
-                  to="/"
+                  to="/addmovie"
                   role="menuitem"
                   aria-current="page"
                   aria-haspopup="false"
@@ -110,7 +117,7 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="flex items-center px-6 ml-auto lg:ml-0 lg:p-0">
-              <Link to="/login" className="btn bg-indigo-600">
+              <Link to="/login" className="btn bg-blue-500 text-white">
                 Login
               </Link>
             </div>

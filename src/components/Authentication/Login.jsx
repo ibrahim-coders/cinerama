@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import { AuthProvider } from '../../components/AuthContext/AuthContext';
 import { BsEyeSlash } from 'react-icons/bs';
 import { LiaEyeSolid } from 'react-icons/lia';
+import { AuthProvider } from '../AuthContext/AuthContext';
 
 const Login = () => {
   // const [showErrorMess, setErrorMess] = useState('');
@@ -36,11 +37,14 @@ const Login = () => {
     setShowPassword(showPassword => !showPassword);
   };
 
+  const { parson } = useContext(AuthProvider);
+  console.log(parson);
   return (
     <div className="max-w-md mx-auto my-10 p-6 border rounded-lg shadow-lg  bg-slate-800">
       <p className="text-center text-2xl text-slate-200 font-medium">
         Sign in to your account
       </p>
+
       <form
         // onSubmit={handleUserLogin}
         action="#"
@@ -108,9 +112,9 @@ const Login = () => {
         <div className="py-1">
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-slate-200 "
+            className="block text-sm font-medium text-slate-200 hover:underline"
           >
-            Password
+            Forgot your password?
           </label>
         </div>
         {/* {showErrorMess && (
@@ -118,7 +122,7 @@ const Login = () => {
         )} */}
         <button
           type="submit"
-          className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
+          className="block w-full rounded-lg border-gray-300 bg-blue-500 px-5 py-3 text-sm font-medium text-white"
         >
           Login
         </button>

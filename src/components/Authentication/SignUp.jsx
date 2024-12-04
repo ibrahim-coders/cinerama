@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import { useState } from 'react';
 import { BsEyeSlash } from 'react-icons/bs';
 import { LiaEyeSolid } from 'react-icons/lia';
+import { FaGoogle } from 'react-icons/fa';
 
 const SignUp = () => {
   // const [showPassword, setShowPassword] = useState(false);
@@ -195,12 +196,21 @@ const SignUp = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+            className="w-full bg-blue-500 text-white border-gray-300 py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
           >
             Sign Up
           </button>
         </form>
-
+        {/* Google Sign-In Option */}
+        <div className="mt-6 text-center">
+          <Link
+            to="#"
+            className="inline-flex bg-blue-500 items-center justify-center text-white w-full p-2 border border-gray-300 rounded-lg hover:bg-blue-600 ring-blue-300 focus:ring focus:ring-gray-300"
+          >
+            <FaGoogle className="mr-2 text-xl" />
+            <p className="text-gray-700">Continue With Google</p>
+          </Link>
+        </div>
         <p className="text-center text-sm text-gray-500 mt-4">
           I already have an account ?
           <Link className="underline pl-2" to="/login">

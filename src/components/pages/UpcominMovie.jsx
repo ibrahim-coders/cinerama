@@ -6,9 +6,9 @@ const UpcominMovie = () => {
       <div className="flex flex-col justify-center text-center items-center">
         <RiMovie2Fill className="text-center text-yellow-500 text-4xl my-4" />
         <p className="text-gray-200 text-xl font-bold">Watch New Movies</p>
-        <h2 className="text-2xl md:text-4xl font-bold text-white py-4">
+        <h2 className="text-2xl md:text-4xl font-bold text-white py-2">
           {' '}
-          Coming Soon Movies
+          Movies Now Playing
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4 gap-4 my-8">
