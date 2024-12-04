@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-export default function NavbarActionButton() {
+const Navbar = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   return (
     <>
-      <header className="relative z-20 w-full border-b shadow-lg sticky top-0 lg:backdrop-blur-sm">
+      <header className="relative  lg:backdrop-blur-sm">
         <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
           <nav
             aria-label="main navigation"
@@ -22,7 +22,7 @@ export default function NavbarActionButton() {
               className={`relative text-white  order-10 block h-10 w-10 self-center lg:hidden
               ${
                 isToggleOpen
-                  ? 'visible  text-white opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(2)]:-rotate-45 [&_span:nth-child(3)]:w-0 '
+                  ? 'visible  opacity-100 [&_span:nth-child(1)]:w-6 [&_span:nth-child(1)]:translate-y-0 [&_span:nth-child(1)]:rotate-45 [&_span:nth-child(2)]:-rotate-45 [&_span:nth-child(3)]:w-0 '
                   : ''
               }`}
               onClick={() => setIsToggleOpen(!isToggleOpen)}
@@ -110,13 +110,14 @@ export default function NavbarActionButton() {
               </li>
             </ul>
             <div className="flex items-center px-6 ml-auto lg:ml-0 lg:p-0">
-              <button className="inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded shadow-md whitespace-nowrap bg-emerald-500 shadow-emerald-200 hover:bg-emerald-600 hover:shadow-sm hover:shadow-emerald-200 focus:bg-emerald-700 focus:shadow-sm focus:shadow-emerald-200 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
-                <span>Login</span>
-              </button>
+              <Link to="/login" className="btn bg-indigo-600">
+                Login
+              </Link>
             </div>
           </nav>
         </div>
       </header>
     </>
   );
-}
+};
+export default Navbar;

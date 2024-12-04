@@ -8,7 +8,7 @@ const UpcominMovie = () => {
         <p className="text-gray-200 text-xl font-bold">Watch New Movies</p>
         <h2 className="text-2xl md:text-4xl font-bold text-white py-4">
           {' '}
-          Movies Now Playing
+          Coming Soon Movies
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4 gap-4 my-8">
