@@ -1,16 +1,17 @@
-import { Outlet } from 'react-router-dom';
 import Navbar from '../pages/Navbar';
 import Footer from '../pages/Footer';
 import Home from '../pages/Home';
 
 const MainLayout = () => {
   return (
-    <div>
-      <Navbar />
-      <div>
-        <Outlet />
+    <div className="font-poppins">
+      <header>
+        <Navbar />
+      </header>
+
+      <main className="max-w-screen-2xl mx-auto">
         <Home />
-      </div>
+      </main>
       <Footer />
     </div>
   );

@@ -15,24 +15,33 @@ const Footer = () => {
               storytelling and technology.
             </p>
           </div>
-
           {/* Latest Videos Section */}
           <div>
-            <h2 className="text-xl font-semibold mb-4">Latest Videos</h2>
+            <h2 className="text-xl font-semibold mb-4">Movies</h2>
             <ul className="space-y-2">
               <li>
                 <a href="#" className="text-gray-400 hover:text-white">
-                  Video 1
+                  Action
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white">
-                  Video 2
+                  Adventure
                 </a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white">
-                  Video 3
+                  Animation
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white">
+                  Comedy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-gray-400 hover:text-white">
+                  Crime
                 </a>
               </li>
             </ul>
@@ -45,7 +54,6 @@ const Footer = () => {
               Explore behind the scenes and see where the magic happens.
             </p>
           </div>
-
           {/* Contact Section */}
           <div>
             <h2 className="text-xl font-semibold mb-4">Stay Connected</h2>

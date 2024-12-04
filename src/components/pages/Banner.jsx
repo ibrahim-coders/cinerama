@@ -11,71 +11,76 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative max-w-screen-2xl mx-auto">
-      <div className="carousel w-full h-[600px]">
+    <div className="relative max-w-screen-2xl mx-auto mt-8">
+      <div className="carousel w-full h-[400px] md:h-[600px]">
         {/* Slide 1 */}
         <div
-          id="slide1"
           className={`carousel-item relative w-full ${
             currentSlide === 1 ? 'block' : 'hidden'
           }`}
         >
           <img
-            src="https://i.ibb.co/QbVJJDC/home-8-img-4.jpg"
-            className="w-full object-cover"
+            src="https://i.ibb.co/WgYVqFk/slider-1-3.jpg"
+            className="w-full h-full object-cover"
             alt="The Adventure Begins"
           />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-            <h1 className="text-4xl font-bold">The Adventure Begins</h1>
-            <p className="mt-4 text-lg">
-              Follow a group of explorers as they unravel the mysteries of an
-              ancient world.
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
+            <h1 className="text-2xl md:text-5xl font-bold">
+              Best Film Studio in New York
+            </h1>
+            <p className="mt-4 text-base md:text-lg">
+              YEARS OF EXPERIENCE IN THE INDUSTRY
             </p>
-            <p className="mt-2 italic">Genre: Action, Adventure</p>
+            <p className="mt-2 italic text-sm md:text-base">
+              Genre: Action, Adventure
+            </p>
           </div>
         </div>
 
         {/* Slide 2 */}
         <div
-          id="slide2"
           className={`carousel-item relative w-full ${
             currentSlide === 2 ? 'block' : 'hidden'
           }`}
         >
           <img
-            src="https://i.ibb.co/c633c0Q/portfolio-single-img-7.jpg"
-            className="w-full object-cover"
+            src="https://i.ibb.co/Dbjtwjx/slider-1-1.jpg"
+            className="w-full h-full object-cover"
             alt="A Love Beyond Time"
           />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-            <h1 className="text-4xl font-bold">A Love Beyond Time</h1>
-            <p className="mt-4 text-lg">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
+            <h1 className="text-2xl md:text-4xl font-bold">
+              Outstanding Studios For Making Films
+            </h1>
+            <p className="mt-4 text-base md:text-lg">
               A timeless love story that transcends the barriers of time and
               space.
             </p>
-            <p className="mt-2 italic">Genre: Romance, Drama</p>
+            <p className="mt-2 italic text-sm md:text-base">
+              Genre: Romance, Drama
+            </p>
           </div>
         </div>
 
         {/* Slide 3 */}
         <div
-          id="slide3"
           className={`carousel-item relative w-full ${
             currentSlide === 3 ? 'block' : 'hidden'
           }`}
         >
           <img
-            src="https://i.ibb.co/nPZy3FV/Blog-standard-img-4.jpg"
-            className="w-full object-cover"
+            src="https://i.ibb.co/LkNhNWf/slider-1-2.jpg"
+            className="w-full h-full object-cover"
             alt="The Digital Frontier"
           />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-            <h1 className="text-4xl font-bold">The Digital Frontier</h1>
-            <p className="mt-4 text-lg">
-              Dive into a high-tech thriller where AI and humanity collide in an
-              epic battle.
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4 md:px-8">
+            <h1 className="text-2xl md:text-5xl font-bold">
+              Makes & Distribute Digital Content
+            </h1>
+            <p className="mt-4 text-base md:text-lg">Video Production</p>
+            <p className="mt-2 italic text-sm md:text-base">
+              Genre: Sci-Fi, Thriller
             </p>
-            <p className="mt-2 italic">Genre: Sci-Fi, Thriller</p>
           </div>
         </div>
       </div>
@@ -83,7 +88,7 @@ const Banner = () => {
       {/* Navigation Buttons */}
       <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
         <button
-          className="btn btn-circle"
+          className="btn btn-circle bg-gray-800/50 hover:bg-gray-800 text-white"
           onClick={() =>
             setCurrentSlide(currentSlide === 1 ? 3 : currentSlide - 1)
           }
@@ -91,7 +96,7 @@ const Banner = () => {
           ❮
         </button>
         <button
-          className="btn btn-circle"
+          className="btn btn-circle bg-gray-800/50 hover:bg-gray-800 text-white"
           onClick={() => setCurrentSlide((currentSlide % 3) + 1)}
         >
           ❯

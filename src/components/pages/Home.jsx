@@ -1,11 +1,13 @@
 import Banner from './Banner';
-import Movie from './Movie';
+import FilemsImage from './filemsImage';
+import UpcominMovie from './UpcominMovie';
 
 const Home = () => {
   return (
     <div>
       <Banner />
-      <Movie />
+      <FilemsImage></FilemsImage>
+      <UpcominMovie />
     </div>
   );
 };
