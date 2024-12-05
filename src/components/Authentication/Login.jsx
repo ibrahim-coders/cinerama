@@ -1,44 +1,44 @@
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { AuthProvider } from '../../components/AuthContext/AuthContext';
+
 import { BsEyeSlash } from 'react-icons/bs';
 import { LiaEyeSolid } from 'react-icons/lia';
 import { AuthProvider } from '../AuthContext/AuthContext';
+import { toast } from 'react-toastify';
 
 const Login = () => {
-  // const [showErrorMess, setErrorMess] = useState('');
+  const [showErrorMess, setErrorMess] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  // const { userSigin } = useContext(AuthProvider);
-  // const handleUserLogin = e => {
-  //   e.preventDefault();
+  const { UserLogin } = useContext(AuthProvider);
+  const handleUserLogin = e => {
+    e.preventDefault();
 
-  //   const email = e.target.email.value;
-  //   const password = e.target.password.value;
-  //   console.log(email, password);
-  //   if (!email || !password) {
-  //     setErrorMess('Both email and password are required!');
-  //     return;
-  //   }
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-  //   userSigin(email, password)
-  //     .then(result => {
-  //       console.log(result.user);
-  //       setErrorMess('');
-  //       alert('user sucesfull');
-  //     })
-  //     .catch(error => {
-  //       console.log('ERROR', error.message);
-  //       setErrorMess(error.message);
-  //       setErrorMess('Invalid email or password');
-  //     });
-  // };
+    console.log(email, password);
+    if (!email || !password) {
+      setErrorMess('Both email and password are required!');
+      return;
+    }
 
-  const togglePasswordVisibility = () => {
+    UserLogin(email, password)
+      .then(result => {
+        console.log(result.user);
+        setErrorMess('');
+        toast.success('Login Successful!');
+      })
+      .catch(error => {
+        console.log('ERROR', error.message);
+        setErrorMess(error.message);
+        setErrorMess('Invalid email or password');
+      });
+  };
+
+  const passwordVisibility = () => {
     setShowPassword(showPassword => !showPassword);
   };
 
-  const { parson } = useContext(AuthProvider);
-  console.log(parson);
   return (
     <div className="max-w-md mx-auto my-10 p-6 border rounded-lg shadow-lg  bg-slate-800">
       <p className="text-center text-2xl text-slate-200 font-medium">
@@ -46,7 +46,7 @@ const Login = () => {
       </p>
 
       <form
-        // onSubmit={handleUserLogin}
+        onSubmit={handleUserLogin}
         action="#"
         className="mb-0 mt-6 space-y-4 rounded-lg p-4  sm:p-6 lg:p-8"
       >
@@ -84,7 +84,9 @@ const Login = () => {
             </span>
           </div>
         </div>
-
+        {showErrorMess && (
+          <p className="text-red-500 text-sm text-center">{showErrorMess}</p>
+        )}
         <div>
           <label
             htmlFor="password"
@@ -102,7 +104,7 @@ const Login = () => {
             />
 
             <span
-              onClick={togglePasswordVisibility}
+              onClick={passwordVisibility}
               className="absolute inset-y-0 end-0 grid place-content-center px-4"
             >
               {showPassword ? <LiaEyeSolid /> : <BsEyeSlash />}
@@ -117,9 +119,7 @@ const Login = () => {
             Forgot your password?
           </label>
         </div>
-        {/* {showErrorMess && (
-          <p className="text-red-500 text-sm text-center">{showErrorMess}</p>
-        )} */}
+
         <button
           type="submit"
           className="block w-full rounded-lg border-gray-300 bg-blue-500 px-5 py-3 text-sm font-medium text-white"

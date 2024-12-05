@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { RiMovie2Fill } from 'react-icons/ri';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthProvider } from '../AuthContext/AuthContext';
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthProvider);
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+  console.log(user?.displayName);
+  console.log(user?.photoURL);
 
   return (
     <>
-      <header className="relative  lg:backdrop-blur-sm bg-blue-900">
+      <header className="relative  lg:backdrop-blur-sm bg-blue-900 px-6">
         <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
           <nav
             aria-label="main navigation"
@@ -116,10 +120,39 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className="flex items-center px-6 ml-auto lg:ml-0 lg:p-0">
-              <Link to="/login" className="btn bg-blue-500 text-white">
-                Login
-              </Link>
+            <div className="flex items-center my-2">
+              {user && user.email ? (
+                <div className="relative group">
+                  <img
+                    src={user?.photoURL}
+                    alt="User Profile"
+                    className="w-28 
+                    rounded-full "
+                  />
+                  <p className="absolute inset-0 flex items-center justify-center text-sm text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full">
+                    {user?.displayName}
+                  </p>
+                </div>
+              ) : (
+                ''
+              )}
+            </div>
+            <div className="flex items-center justify-between px-4 py-2 lg:px-6 lg:py-0">
+              {user && user.email ? (
+                <Link
+                  onClick={logOut}
+                  className="btn bg-blue-500 text-white text-sm px-4 py-2 rounded-md mt-2 lg:mt-0"
+                >
+                  Log-Out
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="btn bg-blue-500 text-white text-sm px-4 py-2 rounded-md mt-2 lg:mt-0"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </nav>
         </div>

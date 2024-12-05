@@ -6,16 +6,30 @@ import { LiaEyeSolid } from 'react-icons/lia';
 import { FaGoogle } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthProvider } from '../AuthContext/AuthContext';
-import { SiNamebase } from 'react-icons/si';
+import { toast } from 'react-toastify';
+
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../firebase/firebase.init';
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { creactNewUsers } = useContext(AuthProvider);
+  const { creactNewUsers, updateUsersProfile } = useContext(AuthProvider);
 
   const [errorMess, setErrorMess] = useState('');
   // const navigate = useNavigate();
-
+  const provider = new GoogleAuthProvider();
+  const handleGogoleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then(result => {
+        setUser(result.user);
+        // navigate(location?.state ? location.state : '/');
+        toast.success('Login successful!');
+      })
+      .catch(error => {
+        console.log('ERROR', error.message);
+      });
+  };
   const handleSubmit = e => {
     e.preventDefault();
 
@@ -31,6 +45,7 @@ const SignUp = () => {
     // Validation
     if (!terms) {
       setErrorMess('Please Accept Our terms and Conditions');
+      return;
     }
     if (password.length < 6) {
       setErrorMess('Password must be at least 6 characters long.');
@@ -51,7 +66,18 @@ const SignUp = () => {
     creactNewUsers(email, password)
       .then(result => {
         console.log(result.user);
+        toast.success('Signup Successful!');
         // navigate('/');
+        updateUsersProfile({
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            //  navigate(location?.state ? location.state : '/');
+          })
+          .catch(err => {
+            console.log('ERROR', err);
+          });
       })
       .catch(error => {
         console.error('Registration Error:', error.message);
@@ -171,6 +197,7 @@ const SignUp = () => {
         {/* Google Sign-In Option */}
         <div className="mt-6 text-center">
           <Link
+            onClick={handleGogoleLogin}
             to="#"
             className="inline-flex bg-blue-500 items-center justify-center text-white w-full p-2 border border-gray-300 rounded-lg hover:bg-blue-600 ring-blue-300 focus:ring focus:ring-gray-300"
           >

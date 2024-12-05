@@ -5,11 +5,13 @@ import SignUp from '../Authentication/SignUp';
 import Home from '../pages/Home';
 import Login from '../Authentication/Login';
 import MovieForm from '../pages/AddMovie/MovieForm';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
