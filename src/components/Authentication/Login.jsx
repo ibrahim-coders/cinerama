@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { BsEyeSlash } from 'react-icons/bs';
 import { LiaEyeSolid } from 'react-icons/lia';
@@ -7,6 +7,7 @@ import { AuthProvider } from '../AuthContext/AuthContext';
 import { toast } from 'react-toastify';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [showErrorMess, setErrorMess] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const { UserLogin } = useContext(AuthProvider);
@@ -27,6 +28,7 @@ const Login = () => {
         console.log(result.user);
         setErrorMess('');
         toast.success('Login Successful!');
+        navigate(location?.state ? location.state : '/');
       })
       .catch(error => {
         console.log('ERROR', error.message);

@@ -6,6 +6,7 @@ import Home from '../pages/Home';
 import Login from '../Authentication/Login';
 import MovieForm from '../pages/AddMovie/MovieForm';
 import ErrorPage from '../ErrorPage/ErrorPage';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/addmovie',
-        element: <MovieForm />,
+        element: (
+          <PrivateRoute>
+            <MovieForm />
+          </PrivateRoute>
+        ),
       },
       {
         path: '/login',

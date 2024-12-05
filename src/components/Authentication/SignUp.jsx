@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 import { BsEyeSlash } from 'react-icons/bs';
@@ -17,13 +17,13 @@ const SignUp = () => {
   const { creactNewUsers, updateUsersProfile } = useContext(AuthProvider);
 
   const [errorMess, setErrorMess] = useState('');
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const provider = new GoogleAuthProvider();
   const handleGogoleLogin = () => {
     signInWithPopup(auth, provider)
       .then(result => {
         setUser(result.user);
-        // navigate(location?.state ? location.state : '/');
+        navigate(location?.state ? location.state : '/');
         toast.success('Login successful!');
       })
       .catch(error => {
@@ -67,13 +67,13 @@ const SignUp = () => {
       .then(result => {
         console.log(result.user);
         toast.success('Signup Successful!');
-        // navigate('/');
+        navigate(location?.state ? location.state : '/');
         updateUsersProfile({
           displayName: name,
           photoURL: photo,
         })
           .then(() => {
-            //  navigate(location?.state ? location.state : '/');
+            navigate(location?.state ? location.state : '/');
           })
           .catch(err => {
             console.log('ERROR', err);
