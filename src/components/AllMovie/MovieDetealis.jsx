@@ -1,24 +1,37 @@
-import { useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MovieDetealis = () => {
-  const movies = useLoaderData();
+  const movie = useLoaderData();
   const navigate = useNavigate();
-  const [movie, setMovie] = useState(movies);
-  const handleUserDelete = id => {
-    console.log(id);
-    fetch(`http://localhost:5000/movie/${id}`, {
-      method: 'DELETE',
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
 
-        const remaing = movie.filter(u => u._id !== id);
-        setMovie(remaing);
-        navigate('/');
-      })
-      .catch(error => console.error('Error deleting user:', error));
+  const handleUserDelete = id => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be delete the movie",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/movie/${id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(() => {
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your movie has been deleted.',
+              icon: 'success',
+            });
+
+            navigate('/');
+          })
+          .catch(error => console.error('Error deleting movie:', error));
+      }
+    });
   };
   console.log(movie);
   return (
