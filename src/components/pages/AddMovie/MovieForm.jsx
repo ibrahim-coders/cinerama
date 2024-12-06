@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
+
 const MovieForm = () => {
   const [formData, setFormData] = useState({
     poster: '',
@@ -69,9 +70,9 @@ const MovieForm = () => {
 
     // Show Swal Alert
     Swal.fire({
-      position: 'top-end',
+      position: 'center',
       icon: 'success',
-      title: 'Form submitted successfully!',
+      title: 'Movie submitted successfully!',
       showConfirmButton: false,
       timer: 1500,
     });

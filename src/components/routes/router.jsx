@@ -7,6 +7,7 @@ import Login from '../Authentication/Login';
 import MovieForm from '../pages/AddMovie/MovieForm';
 import ErrorPage from '../ErrorPage/ErrorPage';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import AllMovie from '../AllMovie/AllMovie';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
+        loader: () => fetch('http://localhost:5000/movie'),
+      },
+      {
+        path: '/allMovie',
+        element: <AllMovie />,
+        loader: () => fetch('http://localhost:5000/movie'),
       },
       {
         path: '/addmovie',

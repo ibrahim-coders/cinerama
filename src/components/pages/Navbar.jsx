@@ -77,7 +77,7 @@ const Navbar = () => {
               </li>
               <li role="none" className="flex items-stretch">
                 <NavLink
-                  to="/"
+                  to="/allMovie"
                   role="menuitem"
                   aria-current="page"
                   aria-haspopup="false"
