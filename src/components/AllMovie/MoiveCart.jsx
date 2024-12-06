@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const MoiveCart = ({ movie }) => {
   console.log(movie);
   const { duration, genre, poster, rating, releaseYear, summary, title, _id } =
@@ -23,7 +25,7 @@ const MoiveCart = ({ movie }) => {
           </div>
 
           <p className="text-sm text-gray-300 text-start">
-            Release Year:{releaseYear}
+            Release Year: <span>{releaseYear}</span>
           </p>
           <div className="flex items-center space-x-1">
             {/* Star Rating */}
@@ -44,7 +46,9 @@ const MoiveCart = ({ movie }) => {
           </div>
 
           <div className="card-actions mt-4">
-            <button className="btn btn-primary">See Details</button>
+            <Link to={`moviedetealis/${_id}`} className="btn btn-primary">
+              See Details
+            </Link>
           </div>
         </div>
       </div>

@@ -6,8 +6,9 @@ import Home from '../pages/Home';
 import Login from '../Authentication/Login';
 import MovieForm from '../pages/AddMovie/MovieForm';
 import ErrorPage from '../ErrorPage/ErrorPage';
-import PrivateRoute from '../PrivateRoute/PrivateRoute';
+
 import AllMovie from '../AllMovie/AllMovie';
+import MovieDetealis from '../AllMovie/MovieDetealis';
 
 const router = createBrowserRouter([
   {
@@ -27,11 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/addmovie',
-        element: (
-          <PrivateRoute>
-            <MovieForm />
-          </PrivateRoute>
-        ),
+        element: <MovieForm />,
       },
       {
         path: '/login',
@@ -40,6 +37,12 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp />,
+      },
+      {
+        path: '/moviedetealis/:id',
+        element: <MovieDetealis />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/movie/${params.id}`),
       },
     ],
   },

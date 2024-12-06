@@ -76,27 +76,35 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li role="none" className="flex items-stretch">
-                <NavLink
-                  to="/allMovie"
-                  role="menuitem"
-                  aria-current="page"
-                  aria-haspopup="false"
-                  className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
-                >
-                  <span>All Movies</span>
-                </NavLink>
+                {user && user.email ? (
+                  <NavLink
+                    to="/allMovie"
+                    role="menuitem"
+                    aria-current="page"
+                    aria-haspopup="false"
+                    className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
+                  >
+                    <span>All Movies</span>
+                  </NavLink>
+                ) : (
+                  ''
+                )}
               </li>
-              <li role="none" className="flex items-stretch">
-                <NavLink
-                  to="/addmovie"
-                  role="menuitem"
-                  aria-current="page"
-                  aria-haspopup="false"
-                  className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
-                >
-                  <span>Add Movie</span>
-                </NavLink>
-              </li>
+              {user && user.email ? (
+                <li role="none" className="flex items-stretch">
+                  <NavLink
+                    to="/addmovie"
+                    role="menuitem"
+                    aria-current="page"
+                    aria-haspopup="false"
+                    className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
+                  >
+                    <span>Add Movie</span>
+                  </NavLink>
+                </li>
+              ) : (
+                ''
+              )}
               <li role="none" className="flex items-stretch">
                 <NavLink
                   to="/"
