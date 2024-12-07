@@ -6,8 +6,8 @@ import { AuthProvider } from '../AuthContext/AuthContext';
 const Navbar = () => {
   const { user, logOut } = useContext(AuthProvider);
   const [isToggleOpen, setIsToggleOpen] = useState(false);
-  console.log(user?.displayName);
-  console.log(user?.photoURL);
+  // console.log(user?.displayName);
+  // console.log(user?.photoURL);
 
   return (
     <>
@@ -76,19 +76,15 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li role="none" className="flex items-stretch">
-                {user && user.email ? (
-                  <NavLink
-                    to="/allMovie"
-                    role="menuitem"
-                    aria-current="page"
-                    aria-haspopup="false"
-                    className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
-                  >
-                    <span>All Movies</span>
-                  </NavLink>
-                ) : (
-                  ''
-                )}
+                <NavLink
+                  to="/allMovie"
+                  role="menuitem"
+                  aria-current="page"
+                  aria-haspopup="false"
+                  className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
+                >
+                  <span>All Movies</span>
+                </NavLink>
               </li>
               {user && user.email ? (
                 <li role="none" className="flex items-stretch">
@@ -106,15 +102,19 @@ const Navbar = () => {
                 ''
               )}
               <li role="none" className="flex items-stretch">
-                <NavLink
-                  to="/favoritesmovie"
-                  role="menuitem"
-                  aria-current="page"
-                  aria-haspopup="false"
-                  className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
-                >
-                  <span>My Favorite</span>
-                </NavLink>
+                {user && user.email ? (
+                  <NavLink
+                    to="/favoritesmovie"
+                    role="menuitem"
+                    aria-current="page"
+                    aria-haspopup="false"
+                    className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
+                  >
+                    <span>My Favorite</span>
+                  </NavLink>
+                ) : (
+                  ''
+                )}
               </li>
               <li role="none" className="flex items-stretch">
                 <NavLink

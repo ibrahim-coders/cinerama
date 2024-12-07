@@ -14,7 +14,7 @@ const AuthContext = ({ children }) => {
 
   const [loading, setLoading] = useState(true);
   //signup
-  console.log(user, loading);
+  // console.log(user, loading);
   const creactNewUsers = (email, password) => {
     setLoading(false);
     return createUserWithEmailAndPassword(auth, email, password);

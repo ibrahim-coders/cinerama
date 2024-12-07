@@ -17,7 +17,6 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    console.log(email, password);
     if (!email || !password) {
       setErrorMess('Both email and password are required!');
       return;

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 const MoiveCart = ({ movie }) => {
-  console.log(movie);
   const { duration, genre, poster, rating, releaseYear, summary, title, _id } =
     movie;
 

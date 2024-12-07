@@ -45,7 +45,7 @@ const MovieDetails = () => {
 
     Swal.fire({
       title: 'Are you sure?',
-      text: "You won't be able to delete the movie from favorites easily.",
+      text: 'Do you want your favorite Movie.',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

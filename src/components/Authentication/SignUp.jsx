@@ -38,7 +38,7 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const terms = e.target.terms.checked;
-    console.log(name, photo, email, password, terms);
+
     // Reset error message
     setErrorMess('');
 
