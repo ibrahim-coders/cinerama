@@ -53,7 +53,7 @@ const AllMovie = () => {
 
               <div className="card-actions mt-4">
                 <Link
-                  to={`moviedetealis/${movie._id}`}
+                  to={`/moviedetealis/${movie._id}`}
                   className="btn btn-primary"
                 >
                   See Details

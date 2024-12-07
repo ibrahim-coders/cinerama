@@ -1,14 +1,21 @@
+import { useContext } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthProvider } from '../AuthContext/AuthContext';
 
-const MovieDetealis = () => {
+const MovieDetails = () => {
+  const { user } = useContext(AuthProvider);
+  // console.log(user.email);
+  // const { email } = user;
+  // // console(email);
   const movie = useLoaderData();
   const navigate = useNavigate();
 
+  // Handle movie deletion
   const handleUserDelete = id => {
     Swal.fire({
       title: 'Are you sure?',
-      text: "You won't be delete the movie",
+      text: "You won't be able to delete the movie",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -26,17 +33,43 @@ const MovieDetealis = () => {
               text: 'Your movie has been deleted.',
               icon: 'success',
             });
-
             navigate('/');
           })
           .catch(error => console.error('Error deleting movie:', error));
       }
     });
   };
-  console.log(movie);
+
+  // Handle  favorites
+  const handleAddToFavorites = movie => {
+    const userEmail = user?.email;
+    console.log(userEmail);
+    fetch('http://localhost:5000/favorite-movie/add-favorite', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        movieDetails: {
+          email: userEmail,
+          poster: movie.poster,
+          title: movie.title,
+          genre: movie.genre,
+          duration: movie.duration,
+          releaseYear: movie.releaseYear,
+          rating: movie.rating,
+        },
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      });
+  };
+
   return (
     <div className="container mx-auto my-10">
-      <div className=" max-w-screen-md card bg-base-100 shadow-xl p-6 mx-auto">
+      <div className="max-w-screen-md card bg-base-100 shadow-xl p-6 mx-auto">
         <img
           src={movie.poster}
           alt={movie.title}
@@ -73,11 +106,16 @@ const MovieDetealis = () => {
           >
             Delete
           </button>
-          <button className="btn bg-primary text-white">Add to Favorite</button>
+          <button
+            onClick={() => handleAddToFavorites(movie)}
+            className="btn bg-primary text-white"
+          >
+            Add to Favorite
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default MovieDetealis;
+export default MovieDetails;

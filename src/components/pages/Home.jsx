@@ -1,22 +1,11 @@
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Banner from './Banner';
 import FilemsImage from './filemsImage';
 import UpcominMovie from './UpcominMovie';
 import MoiveCart from '../AllMovie/MoiveCart';
-import { useContext, useState } from 'react';
-import { AuthProvider } from '../AuthContext/AuthContext';
+import { useState } from 'react';
 
 const Home = () => {
-  const { user } = useContext(AuthProvider);
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    if (user) {
-      navigate('/allMovie');
-    } else {
-      navigate('/login');
-    }
-  };
   const movies = useLoaderData();
   const [sortedMovies, setSortedMovies] = useState(movies);
 
@@ -39,9 +28,9 @@ const Home = () => {
         ))}
       </div>
       <div className="flex justify-center text-center my-6">
-        <button onClick={handleClick} className="btn bg-violet-600 text-white">
+        <Link to="/allMovie" className="btn bg-violet-600 text-white">
           See all movies
-        </button>
+        </Link>
       </div>
       <FilemsImage></FilemsImage>
       <UpcominMovie />

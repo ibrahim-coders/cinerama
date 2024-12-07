@@ -107,7 +107,7 @@ const Navbar = () => {
               )}
               <li role="none" className="flex items-stretch">
                 <NavLink
-                  to="/"
+                  to="/favoritesmovie"
                   role="menuitem"
                   aria-current="page"
                   aria-haspopup="false"

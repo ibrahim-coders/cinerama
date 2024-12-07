@@ -9,6 +9,7 @@ import ErrorPage from '../ErrorPage/ErrorPage';
 
 import AllMovie from '../AllMovie/AllMovie';
 import MovieDetealis from '../AllMovie/MovieDetealis';
+import FavoritesMovie from '../AllMovie/FavoritesMovie';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/addmovie',
         element: <MovieForm />,
+      },
+      {
+        path: '/favoritesmovie',
+        element: <FavoritesMovie />,
       },
       {
         path: '/login',
