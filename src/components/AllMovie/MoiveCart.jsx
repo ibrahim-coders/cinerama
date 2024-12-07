@@ -7,11 +7,15 @@ const MoiveCart = ({ movie }) => {
 
   return (
     <div className="mx-auto mt-10">
-      <div className="card card-compact bg-base-100 w-96 shadow-xl">
+      <div className="w-full bg-base-200 shadow-xl p-6 mx-auto mb-6 rounded-md">
         <figure>
-          <img src={poster} alt="movie" className="w-full h-64" />
+          <img
+            src={poster}
+            alt="movie"
+            className="w-full h-64 mb-4 text-gray-300"
+          />
         </figure>
-        <div className="card-body">
+        <div className="">
           <h2 className="card-title">{title}</h2>
 
           <div className="text-start text-sm ">

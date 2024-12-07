@@ -22,7 +22,7 @@ const Home = () => {
           Sort
         </button>
       </div>
-      <div className="grid grid-cold-1 md:grid-cols-2 lg:grid-cols-3 mx-auto text-center items-center px-4">
+      <div className="grid grid-cold-1 md:grid-cols-2 lg:grid-cols-3 mx-auto text-center items-center px-4  gap-6">
         {sortedMovies.slice(0, 6).map(movie => (
           <MoiveCart key={movie._id} movie={movie}></MoiveCart>
         ))}

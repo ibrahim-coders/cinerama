@@ -4,10 +4,8 @@ import Swal from 'sweetalert2';
 import { AuthProvider } from '../AuthContext/AuthContext';
 
 const MovieDetails = () => {
-  const { user } = useContext(AuthProvider);
-  // console.log(user.email);
-  // const { email } = user;
-  // // console(email);
+  const { user, loading } = useContext(AuthProvider);
+
   const movie = useLoaderData();
   const navigate = useNavigate();
 
@@ -41,32 +39,56 @@ const MovieDetails = () => {
   };
 
   // Handle  favorites
+
   const handleAddToFavorites = movie => {
     const userEmail = user?.email;
-    console.log(userEmail);
-    fetch('http://localhost:5000/favorite-movie/add-favorite', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        movieDetails: {
-          email: userEmail,
-          poster: movie.poster,
-          title: movie.title,
-          genre: movie.genre,
-          duration: movie.duration,
-          releaseYear: movie.releaseYear,
-          rating: movie.rating,
-        },
-      }),
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      });
-  };
 
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to delete the movie from favorites easily.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, add to favorites!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch('http://localhost:5000/favorite-movie/add-favorite', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            movieDetails: {
+              email: userEmail,
+              poster: movie.poster,
+              title: movie.title,
+              genre: movie.genre,
+              duration: movie.duration,
+              releaseYear: movie.releaseYear,
+              rating: movie.rating,
+            },
+          }),
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            Swal.fire(
+              'Added!',
+              'The movie has been added to your favorites.',
+              'success'
+            );
+          });
+      }
+    });
+  };
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="w-12 h-12 border-t-4 border-red-500 border-solid rounded-full animate-spin"></div>
+      </div>
+    );
+  }
   return (
     <div className="container mx-auto my-10">
       <div className="max-w-screen-md card bg-base-100 shadow-xl p-6 mx-auto">

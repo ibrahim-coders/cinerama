@@ -1,18 +1,33 @@
+import { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthProvider } from '../AuthContext/AuthContext';
 
 const AllMovie = () => {
   const allMovie = useLoaderData();
+  const { loading } = useContext(AuthProvider);
   console.log(allMovie);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="w-12 h-12 border-t-4 border-red-500 border-solid rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
   return (
-    <div className="grid grid-cold-1 md:grid-cols-2 lg:grid-cols-3 mx-auto text-center items-center px-4">
+    <div className="grid grid-cold-1 md:grid-cols-2 lg:grid-cols-3 mx-auto text-center items-center px-4 gap-6">
       {allMovie.map(movie => (
         <div key={movie._id} className="mx-auto mt-10">
-          <div className="card card-compact bg-base-100 w-96 shadow-xl">
+          <div className="w-full bg-base-200 shadow-xl p-6 mx-auto mb-6 rounded-md">
             <figure>
-              <img src={movie.poster} alt="movie" className="w-full h-64" />
+              <img
+                src={movie.poster}
+                alt="movie"
+                className="w-full h-64 mb-4 "
+              />
             </figure>
-            <div className="card-body">
+            <div className="">
               <h2 className="card-title">{movie.title}</h2>
 
               <div className="text-start text-sm">
@@ -33,7 +48,7 @@ const AllMovie = () => {
                 Release Year: {movie.releaseYear}
               </p>
 
-              <div className="flex items-center space-x-1">
+              <div className="flex items-center ">
                 {/* Star Rating */}
                 <div className="rating">
                   {Array.from({ length: 5 }, (_, index) => (
