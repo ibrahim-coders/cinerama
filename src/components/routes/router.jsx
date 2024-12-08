@@ -10,6 +10,8 @@ import ErrorPage from '../ErrorPage/ErrorPage';
 import AllMovie from '../AllMovie/AllMovie';
 import MovieDetealis from '../AllMovie/MovieDetealis';
 import FavoritesMovie from '../AllMovie/FavoritesMovie';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import ContactPage from '../pages/ContactPage';
 
 const router = createBrowserRouter([
   {
@@ -47,9 +49,17 @@ const router = createBrowserRouter([
       },
       {
         path: '/moviedetealis/:id',
-        element: <MovieDetealis />,
+        element: (
+          <PrivateRoute>
+            <MovieDetealis />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/movie/${params.id}`),
+      },
+      {
+        path: '/contactpage',
+        element: <ContactPage />,
       },
     ],
   },

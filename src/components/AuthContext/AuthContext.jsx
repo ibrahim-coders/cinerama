@@ -7,12 +7,13 @@ import {
 } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase.init';
-
+import '../App.css';
 export const AuthProvider = createContext();
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState('light');
   //signup
   // console.log(user, loading);
   const creactNewUsers = (email, password) => {
@@ -42,6 +43,10 @@ const AuthContext = ({ children }) => {
       unSubscribe();
     };
   }, []);
+
+  const toggleTheme = () => {
+    setTheme(curr => (curr === 'light' ? 'dark' : 'light'));
+  };
   const authInfo = {
     creactNewUsers,
     UserLogin,
@@ -49,9 +54,12 @@ const AuthContext = ({ children }) => {
     logOut,
     loading,
     updateUsersProfile,
+    theme,
+    setTheme,
+    toggleTheme,
   };
   return (
-    <div>
+    <div className={`App main ${theme}`} id={theme}>
       <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
     </div>
   );

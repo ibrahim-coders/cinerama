@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { AuthProvider } from '../AuthContext/AuthContext';
 
 const MovieDetails = () => {
-  const { user, loading } = useContext(AuthProvider);
+  const { user } = useContext(AuthProvider);
 
   const movie = useLoaderData();
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const MovieDetails = () => {
     });
   };
 
-  // Handle  favorites
+  //  favorites
 
   const handleAddToFavorites = movie => {
     const userEmail = user?.email;
@@ -82,13 +82,7 @@ const MovieDetails = () => {
       }
     });
   };
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="w-12 h-12 border-t-4 border-red-500 border-solid rounded-full animate-spin"></div>
-      </div>
-    );
-  }
+
   return (
     <div className="container mx-auto my-10">
       <div className="max-w-screen-md card bg-base-100 shadow-xl p-6 mx-auto">

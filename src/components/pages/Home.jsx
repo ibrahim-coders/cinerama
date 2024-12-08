@@ -17,7 +17,10 @@ const Home = () => {
   return (
     <div className="max-w-screen-2xl mx-auto">
       <Banner />
-      <div className="flex justify-end">
+      <div className="flex  justify-between text-center mt-10 mx-4">
+        <h2 className="text-3xl md:text-5xl text-orange-700 font-bold ">
+          Featured Movies
+        </h2>
         <button onClick={handleSort} className="btn btn-primary">
           Sort
         </button>

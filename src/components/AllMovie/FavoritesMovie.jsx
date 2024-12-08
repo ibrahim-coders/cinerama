@@ -88,9 +88,7 @@ const FavoritesMovie = () => {
                 </label>
               ))}
             </div>
-            <div>
-              <p>email:{movie.movieDetails.email}</p>
-            </div>
+
             <div>
               <button
                 onClick={() => handleFavoritDelete(movie._id)}

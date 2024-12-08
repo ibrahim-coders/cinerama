@@ -2,10 +2,11 @@ import { useContext, useState } from 'react';
 import { RiMovie2Fill } from 'react-icons/ri';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthProvider } from '../AuthContext/AuthContext';
-
+import Switch from 'react-switch';
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthProvider);
+  const { user, logOut, toggleTheme, theme } = useContext(AuthProvider);
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+
   // console.log(user?.displayName);
   // console.log(user?.photoURL);
 
@@ -40,7 +41,7 @@ const Navbar = () => {
               aria-expanded={isToggleOpen ? 'true' : 'false'}
               aria-label="Toggle navigation"
             >
-              <div className="absolute w-6 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+              <div className="absolute w-6 transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 ml-2">
                 <span
                   aria-hidden="true"
                   className="absolute block h-0.5 w-9/12 -translate-y-2 transform rounded-full bg-white transition-all duration-300"
@@ -59,7 +60,7 @@ const Navbar = () => {
             <ul
               role="menubar"
               aria-label="Select page"
-              className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden overflow-y-auto overscroll-contain bg- px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible  lg:px-0 lg:py-0 lg:pt-0 lg:opacity-100 ${
+              className={`absolute left-0 top-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden overflow-y-auto overscroll-contain bg- px-4 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0 lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible  lg:px-0 lg:py-0 lg:pt-0 lg:opacity-100 ${
                 isToggleOpen
                   ? 'visible opacity-100 backdrop-blur-sm'
                   : 'invisible opacity-0'
@@ -70,7 +71,7 @@ const Navbar = () => {
                   to="/"
                   role="menuitem"
                   aria-haspopup="false"
-                  className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 lg:px-8 whitespace-nowrap"
+                  className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 lg:px-2 whitespace-nowrap"
                 >
                   <span>Home</span>
                 </NavLink>
@@ -81,7 +82,7 @@ const Navbar = () => {
                   role="menuitem"
                   aria-current="page"
                   aria-haspopup="false"
-                  className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
+                  className="flex items-center text-white gap-2 py-4  transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-4 whitespace-nowrap"
                 >
                   <span>All Movies</span>
                 </NavLink>
@@ -93,7 +94,7 @@ const Navbar = () => {
                     role="menuitem"
                     aria-current="page"
                     aria-haspopup="false"
-                    className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
+                    className="flex items-center text-white gap-2 py-4  transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-4 whitespace-nowrap"
                   >
                     <span>Add Movie</span>
                   </NavLink>
@@ -108,7 +109,7 @@ const Navbar = () => {
                     role="menuitem"
                     aria-current="page"
                     aria-haspopup="false"
-                    className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-8 whitespace-nowrap"
+                    className="flex items-center text-white gap-2 py-4  transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-4 whitespace-nowrap"
                   >
                     <span>My Favorite</span>
                   </NavLink>
@@ -118,25 +119,25 @@ const Navbar = () => {
               </li>
               <li role="none" className="flex items-stretch">
                 <NavLink
-                  to="/"
+                  to="/contactpage"
                   role="menuitem"
                   aria-current="page"
                   aria-haspopup="false"
-                  className="flex items-center text-white gap-2 py-4 font-bold transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-10 whitespace-nowrap"
+                  className="flex items-center text-white gap-2 py-4  transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-4 whitespace-nowrap"
                 >
-                  <span>About Us</span>
+                  <span>Contact Us</span>
                 </NavLink>
               </li>
             </ul>
             <div className="flex items-center my-2">
               {user && user.email ? (
                 <div className="relative group">
-                  <img
-                    src={user?.photoURL}
-                    alt="User Profile"
-                    className="w-28 
-                    rounded-full "
-                  />
+                  <div className="avatar">
+                    <div className="w-12  rounded-full">
+                      <img src={user?.photoURL} />
+                    </div>
+                  </div>
+
                   <p className="absolute inset-0 flex items-center justify-center text-sm text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full">
                     {user?.displayName}
                   </p>
@@ -145,7 +146,11 @@ const Navbar = () => {
                 ''
               )}
             </div>
-            <div className="flex items-center justify-between px-4 py-2 lg:px-6 lg:py-0">
+            <div className="flex items-center justify-between px-4 mr-2 py-2 lg:px-6 lg:py-0">
+              <div className="pr-4 switch">
+                <Switch onChange={toggleTheme} checked={theme === 'dark'} />
+              </div>
+
               {user && user.email ? (
                 <Link
                   onClick={logOut}
