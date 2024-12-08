@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthProvider } from '../AuthContext/AuthContext';
 
@@ -115,7 +115,7 @@ const MovieDetails = () => {
             ></span>
           ))}
         </div>
-        <div className="flex justify-center gap-4 text-center">
+        <div className="flex flex-col md:justify-start gap-4 text-center">
           <button
             onClick={() => handleUserDelete(movie._id)}
             className="btn bg-red-700 text-white"
@@ -128,6 +128,12 @@ const MovieDetails = () => {
           >
             Add to Favorite
           </button>
+          <Link
+            to={`/updatemovie/${movie._id}`}
+            className="btn bg-primary text-white"
+          >
+            Update Movie
+          </Link>
         </div>
       </div>
     </div>

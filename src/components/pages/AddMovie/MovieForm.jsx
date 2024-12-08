@@ -79,7 +79,6 @@ const MovieForm = () => {
 
     console.log('Form Data:', formData);
 
-    // Clear the form after submission
     setFormData({
       poster: '',
       title: '',

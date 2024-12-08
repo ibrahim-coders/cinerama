@@ -6,12 +6,12 @@ const MoiveCart = ({ movie }) => {
 
   return (
     <div className="mx-auto mt-10">
-      <div className="w-full bg-base-200 shadow-xl p-6 mx-auto mb-6 rounded-md">
+      <div className="w-[400px] bg-base-200 shadow-xl p-6 mx-auto  rounded-md">
         <figure>
           <img
             src={poster}
             alt="movie"
-            className="w-full h-64 mb-4 text-gray-300"
+            className="w-full h-64 mb-4 bg-cover bg-center text-gray-300"
           />
         </figure>
         <div className="">
@@ -49,7 +49,7 @@ const MoiveCart = ({ movie }) => {
           </div>
 
           <div className="card-actions mt-4">
-            <Link to={`moviedetealis/${_id}`} className="btn btn-primary">
+            <Link to={`/moviedetealis/${_id}`} className="btn btn-primary">
               See Details
             </Link>
           </div>

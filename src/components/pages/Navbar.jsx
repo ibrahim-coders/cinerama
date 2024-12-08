@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="relative  lg:backdrop-blur-sm bg-blue-900 px-6">
+      <header className="relative  lg:backdrop-blur-sm bg-blue-900 ">
         <div className="relative mx-auto max-w-full px-6 lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[96rem]">
           <nav
             aria-label="main navigation"
@@ -20,13 +20,15 @@ const Navbar = () => {
             role="navigation"
           >
             {/* Brand logo */}
-            <div className="w-full  gap-2 my-2">
+            <div className="w-full  gap-2 my-4">
               {/* Logo */}
-              <div className="flex items-center ">
-                <RiMovie2Fill className="text-yellow-500 text-4xl ml-14" />
-              </div>
+              {/* <div className="flex items-center ">
+                <RiMovie2Fill className="text-2xl md:text-4xl text-yellow-500 " />
+              </div> */}
               {/* Title */}
-              <h2 className="text-3xl font-bold text-white">CINERAMA</h2>
+              <h2 className="text-xl md:text-3xl font-bold text-white">
+                CINERAMA
+              </h2>
             </div>
 
             {/* Mobile trigger */}
@@ -129,39 +131,49 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className="flex items-center my-2">
+            <div className="relative group">
               {user && user.email ? (
-                <div className="relative group">
-                  <div className="avatar">
-                    <div className="w-12  rounded-full">
-                      <img src={user?.photoURL} />
+                <div className="relative inline-block">
+                  <div
+                    className="flex items-center cursor-pointer"
+                    id="dropdownButton"
+                  >
+                    <div className="avatar w-12 h-12 rounded-full overflow-hidden mt-4">
+                      <img src={user?.photoURL} alt="User" />
                     </div>
                   </div>
 
-                  <p className="absolute inset-0 flex items-center justify-center text-sm text-white bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full">
-                    {user?.displayName}
-                  </p>
+                  {/* Dropdown Menu */}
+                  <div
+                    className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-20 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    id="dropdownMenu"
+                  >
+                    <Link className="block px-4 py-2 text-sm text-gray-700">
+                      <p className="ml-3 text-sm font-medium">
+                        {user?.displayName}
+                      </p>
+                    </Link>
+                    <Link
+                      to="/settings"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      <Switch
+                        onChange={toggleTheme}
+                        checked={theme === 'dark'}
+                      />
+                    </Link>
+                    <button
+                      onClick={logOut}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Log Out
+                    </button>
+                  </div>
                 </div>
-              ) : (
-                ''
-              )}
-            </div>
-            <div className="flex items-center justify-between px-4 mr-2 py-2 lg:px-6 lg:py-0">
-              <div className="pr-4 switch">
-                <Switch onChange={toggleTheme} checked={theme === 'dark'} />
-              </div>
-
-              {user && user.email ? (
-                <Link
-                  onClick={logOut}
-                  className="btn bg-blue-500 text-white text-sm px-4 py-2 rounded-md mt-2 lg:mt-0"
-                >
-                  Log-Out
-                </Link>
               ) : (
                 <Link
                   to="/login"
-                  className="btn bg-blue-500 text-white text-sm px-4 py-2 rounded-md mt-2 lg:mt-0"
+                  className="btn bg-blue-500 text-white text-sm px-4 py-2 rounded-md mt-2 lg:mt-4"
                 >
                   Login
                 </Link>

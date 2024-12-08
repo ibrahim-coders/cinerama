@@ -20,7 +20,6 @@ const Contact = () => {
     <div className="max-w-lg mx-auto p-6 bg-slate-600 shadow-md rounded-md">
       <h2 className="text-2xl font-bold text-center mb-4">Contact Us</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {/* Name Field */}
         <div className="mb-4">
           <label htmlFor="name" className="block text-gray-200 font-medium">
             Name

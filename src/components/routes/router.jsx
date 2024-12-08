@@ -12,6 +12,7 @@ import MovieDetealis from '../AllMovie/MovieDetealis';
 import FavoritesMovie from '../AllMovie/FavoritesMovie';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import ContactPage from '../pages/ContactPage';
+import UpdateMovie from '../AllMovie/UpdateMovie';
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,12 @@ const router = createBrowserRouter([
       {
         path: '/contactpage',
         element: <ContactPage />,
+      },
+      {
+        path: '/updatemovie/:id',
+        element: <UpdateMovie />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/movie/${params.id}`),
       },
     ],
   },

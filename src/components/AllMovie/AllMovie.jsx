@@ -61,13 +61,13 @@ const AllMovie = () => {
         {movies.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto text-center items-center px-4 gap-6">
             {movies.map(movie => (
-              <div key={movie._id} className="mx-auto mt-10">
-                <div className="w-full bg-base-200 shadow-xl p-6 mx-auto mb-6 rounded-md">
+              <div key={movie._id} className="mx-auto mt-10 w-[400px]">
+                <div className="w-full bg-base-200 shadow-xl p-6 mx-auto  rounded-md">
                   <figure>
                     <img
                       src={movie.poster}
                       alt="movie"
-                      className="w-full h-64 mb-4"
+                      className="w-full h-64 mb-4 bg-cover bg-center"
                     />
                   </figure>
                   <div>
@@ -109,7 +109,7 @@ const AllMovie = () => {
 
                     <div className="card-actions mt-4">
                       <Link
-                        to={`/moviedetails/${movie._id}`}
+                        to={`/moviedetealis/${movie._id}`}
                         className="btn btn-primary"
                       >
                         See Details
