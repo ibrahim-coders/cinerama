@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { RiMovie2Fill } from 'react-icons/ri';
+
 import { Link, NavLink } from 'react-router-dom';
 import { AuthProvider } from '../AuthContext/AuthContext';
 import Switch from 'react-switch';

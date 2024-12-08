@@ -19,7 +19,7 @@ const AllMovie = () => {
 
   useEffect(() => {
     if (!allMovie || allMovie.length === 0) {
-      fetch('http://localhost:5000/movie')
+      fetch('https://cinerama-five.vercel.app/movie')
         .then(res => res.json())
         .then(data => setMovies(data));
     }
@@ -33,7 +33,7 @@ const AllMovie = () => {
   };
 
   return (
-    <section>
+    <section className="mb-4">
       <div className="ml-10 my-4">
         <h2 className="text-3xl md:text-5xl text-orange-700 font-bold mt-10">
           All Movies

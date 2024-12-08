@@ -10,16 +10,40 @@ const FavoritesMovie = () => {
 
   const handleFavoritDelete = id => {
     const email = user?.email;
-    fetch(`http://localhost:5000/favorite-movie/add-favorite/${id}`, {
-      method: 'DELETE',
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
 
-        const remainingMovies = favoriteMovie.filter(movie => movie._id !== id);
-        setFavoritMovie(remainingMovies);
-      });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
+      reverseButtons: true,
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://cinerama-five.vercel.app/favorite-movie/add-favorite/${id}`,
+          {
+            method: 'DELETE',
+          }
+        )
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+
+            const remainingMovies = favoriteMovie.filter(
+              movie => movie._id !== id
+            );
+            setFavoritMovie(remainingMovies);
+
+            Swal.fire(
+              'Deleted!',
+              'Your movie has been deleted from favorites.',
+              'success'
+            );
+          });
+      }
+    });
   };
 
   if (!favoriteMovie || favoriteMovie.length === 0) {
@@ -48,7 +72,7 @@ const FavoritesMovie = () => {
           Favorite Movies
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-4">
         {favoriteMovie.map((movie, index) => (
           <div
             key={index}

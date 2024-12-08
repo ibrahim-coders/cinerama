@@ -53,7 +53,7 @@ const MovieDetails = () => {
       confirmButtonText: 'Yes, add to favorites!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch('http://localhost:5000/favorite-movie/add-favorite', {
+        fetch('https://cinerama-five.vercel.app/favorite-movie/add-favorite', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -5,12 +5,12 @@ const UpdateMovie = () => {
   const movieData = useLoaderData();
   const [formData, setFormData] = useState(movieData);
   const [errors, setErrors] = useState({});
-  const genres = ['Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi']; // Example genres
+  const genres = ['Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi'];
   const yearOptions = Array.from(
     { length: 30 },
     (_, i) => new Date().getFullYear() - i
-  ); // Last 30 years
-  const ratingArray = [1, 2, 3, 4, 5]; // Example ratings
+  );
+  const ratingArray = [1, 2, 3, 4, 5];
 
   const validateForm = () => {
     const newErrors = {};
@@ -41,7 +41,7 @@ const UpdateMovie = () => {
     if (!validateForm()) return;
 
     fetch(`http://localhost:5000/movie/${formData._id}`, {
-      method: 'PUT',
+      method: 'patch',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     })

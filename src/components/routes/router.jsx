@@ -23,12 +23,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('http://localhost:5000/movie'),
+        loader: () => fetch('https://cinerama-five.vercel.app/movie'),
       },
       {
         path: '/allMovie',
         element: <AllMovie />,
-        loader: () => fetch('http://localhost:5000/movie'),
+        loader: () => fetch('https://cinerama-five.vercel.app/movie'),
       },
       {
         path: '/addmovie',
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         path: '/favoritesmovie',
         element: <FavoritesMovie />,
         loader: () =>
-          fetch('http://localhost:5000/favorite-movie/add-favorite'),
+          fetch('https://cinerama-five.vercel.app/favorite-movie/add-favorite'),
       },
       {
         path: '/login',
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movie/${params.id}`),
+          fetch(`https://cinerama-five.vercel.app/movie/${params.id}`),
       },
       {
         path: '/contactpage',
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         path: '/updatemovie/:id',
         element: <UpdateMovie />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/movie/${params.id}`),
+          fetch(`https://cinerama-five.vercel.app/movie/${params.id}`),
       },
     ],
   },

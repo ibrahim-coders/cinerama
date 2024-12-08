@@ -89,7 +89,7 @@ const MovieForm = () => {
       summary: '',
     });
     setErrors({});
-    fetch('http://localhost:5000/movie', {
+    fetch('https://cinerama-five.vercel.app/movie', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
